@@ -49,7 +49,7 @@ import {
         </FormControl>
         
 
-        <Button type="submit" as={'a'} href="/services/dashboard.tsx" colorScheme="teal" mb={'10'}>
+        <Button type="submit" as={'a'} href="/dashboard" colorScheme="teal" mb={'10'}>
           Create App
         </Button>
 

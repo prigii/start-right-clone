@@ -1,11 +1,11 @@
 "use client"
-import ContactPage from "@/components/Contact"
+import Contact from "@/components/Contact"
 
 
-export default function Contact() {
+export default function ContactPage() {
   return (
     <>
-      <ContactPage />
+      <Contact />
     </>
   )
 }

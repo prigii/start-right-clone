@@ -301,14 +301,10 @@ import {
     },
     {
       label: "About Us",
-      href: "#",
+      href: "/techstack",
     },
     {
       label: "Contact Us",
-      href: "#",
-    },
-    {
-      label: "Get Started",
-      href: "#",
+      href: "/contact",
     },
   ]

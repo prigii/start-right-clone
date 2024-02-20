@@ -14,7 +14,7 @@ import {
   } from "@chakra-ui/react"
   
     
-    export default function ContactPage() {
+    export default function Contact() {
       
       return (
         <VStack 
@@ -41,7 +41,7 @@ import {
           </FormControl>
           
            
-          <Button type="submit" as={'a'} href="/services/dashboard.tsx" colorScheme="teal" mb={'10'}>
+          <Button type="submit" as={'a'} href="/" colorScheme="teal" mb={'10'}>
             Send message
           </Button>
   
