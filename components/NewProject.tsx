@@ -29,7 +29,7 @@ import {
         <Text>Let us know more about your app then you can buckle up and watch us do the magic.</Text>
         <FormControl>
           <FormLabel>App name:</FormLabel>
-          <Input type="text" placeholder="my-app"/>
+          <Input type="text" placeholder="my-app" isRequired/>
         </FormControl>
         <FormControl>
           <FormLabel>Core functionality:</FormLabel>

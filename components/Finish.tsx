@@ -18,8 +18,8 @@ export default function Finish() {
        <Text color={'red'} fontSize={'x-large'} fontWeight={'extrabold'}>Your app is ready!</Text>
        <Text>Please, let us know if you are satisfied with the product by leaving us some feedback <Link href='/done'color={'blue'}>here.</Link></Text>
        <Text>Congratulations!!!</Text>
-       <Button bg={'blueviolet'} color={'white'}>Download<DownloadIcon mx='4px' /></Button>
-       <Button bg={'black'} color={'white'}>Push to GitHub<FaGithub /></Button>
+       <Button bg={'blueviolet'} color={'white'} as={'a'} href='/done'>Download<DownloadIcon mx='4px' /></Button>
+       <Button bg={'black'} color={'white'} as={'a'} href='/done'>Push to GitHub<FaGithub /></Button>
        
     </Stack>
   )
