@@ -1,40 +1,47 @@
-import { Box, Button, Container, Flex, Heading, List, ListItem, Text } from '@chakra-ui/react'
+import { Box, Button, Checkbox, CheckboxGroup, Container, Flex, Grid, GridItem, Heading, List, ListItem, Stack, Text, VStack } from '@chakra-ui/react'
 
 
 export default function TechStack() {
   return (
-    <Container>
+    <Container justifyItems={'center'}>
       <Heading as={'h2'}>Choose your technology stack</Heading>
-      <Flex alignItems={'center'} flexDirection={'column'}>
-        <Box flex={'flex-column'}>
-          <Text>Type of application</Text>
-          <List>
-            <ListItem>FrontEnd</ListItem>
-            <ListItem>API</ListItem>
-            <ListItem>Full-stack</ListItem>
-          </List>
-        </Box>
-        <Box flex={'flex-column'}>
-          <Text>Front-end stack</Text>
-          <List>
-            <ListItem>HTML, CSS, JS</ListItem>
-            <ListItem>React</ListItem>
-            <ListItem>Next</ListItem>
-          </List>
-        </Box>
-        <Box flex={'flex-column'}>
-          <Text>Back-end stack</Text>
-          <List>
-            <ListItem>Flask</ListItem>
-            <ListItem>Node.js</ListItem>
-            <ListItem>Django</ListItem>
-          </List>
-        </Box>
+      <Grid templateColumns={'repeat(3, 2fr)'} mt={'10'} bg={''} gap={'6'} borderColor={'gray.400'} border={'10'}>
+        <GridItem  border='4px' borderColor='twitter.500' w={'60'} borderRadius={'8'}>
+          <Text align={'center'} fontWeight={'bold'} mb={'4'}>Type of application</Text>
+          <CheckboxGroup colorScheme='green'>
+            <VStack spacing={[1, 5]} direction={['column', 'row']}>
+              <Checkbox value='frontend'>Frontend</Checkbox>
+              <Checkbox value='api'>API</Checkbox>
+              <Checkbox value='fullstack'>Full-stack</Checkbox>
+            </VStack>
+          </CheckboxGroup> 
+        </GridItem>
+        <GridItem border='4px' borderColor='twitter.500' w={'60'} borderRadius={'8'}>
+          <Text align={'center'} fontWeight={'bold'} mb={'4'}>Front-end stack</Text>
+          <CheckboxGroup colorScheme='green'>
+        <VStack spacing={[1, 5]} direction={['column', 'row']}>
+          <Checkbox value='frontend'>HTML, CSS, JS</Checkbox>
+          <Checkbox value='api'>React</Checkbox>
+          <Checkbox value='fullstack'>Next</Checkbox>
+        </VStack>
+      </CheckboxGroup> 
+        </GridItem>
+        <GridItem border='4px' borderColor='twitter.500' w={'60'} borderRadius={'8'}>
+          <Text align={'center'} fontWeight={'bold'} mb={'4'}>Back-end stack</Text>
+          <CheckboxGroup colorScheme='green'>
+            <VStack spacing={[1, 5]} direction={['column', 'row']}>
+              <Checkbox value='frontend'>Node.js</Checkbox>
+              <Checkbox value='api'>Django</Checkbox>
+              <Checkbox value='fullstack'>Flask</Checkbox>
+            </VStack>
+          </CheckboxGroup> 
+        </GridItem>
+      </Grid>
+      <Flex flexDirection={'row'} gap={'20'} mt={'12'} mb={'12'}>
+        <Button as={'a'} href='/appprocessing' bg={'whatsapp.500'} color={'white'} size={'lg'}>Start Building</Button>
+        <Button as={'a'} href='/dashboard' bg={'tomato'} color={'white'} size={'lg'}>Go Back</Button>
       </Flex>
-      <Flex flexDirection={'column'} gap={'8'}>
-        <Button as={'a'} href='/' flex={'flex-column'} bg={'whatsapp'} size={'lg'}>Start Building</Button>
-        <Button as={'a'} href='/' flex={'flex-column'} bg={'whatsapp'} size={'lg'}>Go Back</Button>
-      </Flex>  
+     
     </Container>
   )
 }
