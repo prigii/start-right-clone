@@ -1,11 +1,19 @@
-import { Box, Button, Checkbox, CheckboxGroup, Container, Flex, Grid, GridItem, Heading, List, ListItem, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, Checkbox, CheckboxGroup, Container, Flex, Grid, GridItem, Heading, List, ListItem, Stack, Text, VStack, useColorModeValue } from '@chakra-ui/react'
 
 
 export default function TechStack() {
   return (
-    <Container justifyItems={'center'}>
-      <Heading as={'h2'}>Choose your technology stack</Heading>
-      <Grid templateColumns={'repeat(3, 2fr)'} mt={'10'} bg={''} gap={'6'} borderColor={'gray.400'} border={'10'}>
+    <VStack 
+    //mx={'auto'}
+    mt={'10'}
+    w={{ base: "90%", md: 500, lg: "100%"}}
+    //justifyContent={'center'}
+    bg={useColorModeValue("gray.50", "gray.800")}
+
+  >
+    <Container>
+      <Heading as={'h2'} mx={''} textAlign='center' >Choose your technology stack</Heading>
+      <Grid templateColumns={'repeat(3, 1fr)'} mt={'10'} bg={''} gap={'6'} justifyContent={'center'}>
         <GridItem  border='4px' borderColor='twitter.500' w={'60'} borderRadius={'8'}>
           <Text align={'center'} fontWeight={'bold'} mb={'4'}>Type of application</Text>
           <CheckboxGroup colorScheme='green'>
@@ -37,11 +45,12 @@ export default function TechStack() {
           </CheckboxGroup> 
         </GridItem>
       </Grid>
-      <Flex flexDirection={'row'} gap={'20'} mt={'12'} mb={'12'}>
+      <Flex flexDirection={'row'} gap={'20'} mt={'12'} mb={'12'} justifyContent={'center'}>
         <Button as={'a'} href='/appprocessing' bg={'whatsapp.500'} color={'white'} size={'lg'}>Start Building</Button>
         <Button as={'a'} href='/dashboard' bg={'tomato'} color={'white'} size={'lg'}>Go Back</Button>
       </Flex>
      
     </Container>
+  </VStack>
   )
 }
