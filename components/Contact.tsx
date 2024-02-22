@@ -29,7 +29,7 @@ import {
           <Text>Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.</Text>
           <FormControl>
             <FormLabel>Your email:</FormLabel>
-            <Input type="email" placeholder="my-app"/>
+            <Input type="email" placeholder="email@gmail.com"/>
           </FormControl>
           <FormControl>
             <FormLabel>Subject:</FormLabel>
@@ -37,7 +37,7 @@ import {
           </FormControl>
           <FormControl mb={'8px'}>
             <FormLabel>Your message:</FormLabel>
-            <Textarea typeof="text" placeholder="Tell us more..."></Textarea>
+            <Textarea typeof="text" placeholder=""></Textarea>
           </FormControl>
           
            
