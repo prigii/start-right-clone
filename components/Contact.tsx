@@ -48,4 +48,16 @@ import {
         </VStack>
       )
     } 
-  
+// export const createAction = async ({ request }) => {
+//   const data = await request.formData()
+
+//   const task = {
+//     title: data.get('title'),
+//     description: data.get('description'),
+//     isPriority: data.get('isPriority') === ''
+//   }
+
+//   console.log(task)
+
+//   return redirect('/')
+// }
