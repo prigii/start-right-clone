@@ -36,12 +36,12 @@ export default function Done() {
          onOpen()
          }} 
          color={'white'} bg={'telegram.800'} 
-         mx={'100'}>Leave Feedback</Button>
+         justifyItems={'center'}>Leave Feedback</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         {overlay}
         <ModalContent>
-          <ModalHeader alignContent={'center'}>Leave us some feedback</ModalHeader>
+          <ModalHeader textAlign={'center'}>Leave us some feedback</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Text mb={'4'}>What did you think of the experience in using StartRight?</Text>
