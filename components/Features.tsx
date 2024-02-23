@@ -11,6 +11,9 @@ import {
     useColorModeValue,
   } from "@chakra-ui/react"
   import { IoAnalyticsSharp, IoLogoBitcoin, IoSearchSharp } from "react-icons/io5"
+  import { FaCode } from "react-icons/fa";
+  import { GiArtificialIntelligence } from "react-icons/gi";
+  import { FcCollaboration } from "react-icons/fc";
   import { ReactElement } from "react"
   
   interface FeatureProps {
@@ -54,10 +57,11 @@ import {
             >
               Our Story
             </Text>
-            <Heading>A digital Product design agency</Heading>
+            <Heading>A platform for building web and business apps</Heading>
             <Text color={"gray.500"} fontSize={"lg"}>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore
+              Designed for developers and business enterprises like yours.
+              Here at StartRight we focus on leveraging AI technology and innovation 
+              to unlock creativity and drive technological progress.
             </Text>
             <Stack
               spacing={4}
@@ -69,22 +73,22 @@ import {
             >
               <Feature
                 icon={
-                  <Icon as={IoAnalyticsSharp} color={"yellow.500"} w={5} h={5} />
+                  <Icon as={FaCode} color={"yellow.500"} w={5} h={5} />
                 }
                 iconBg={useColorModeValue("yellow.100", "yellow.900")}
-                text={"Business Planning"}
+                text={"Code generation"}
               />
               <Feature
-                icon={<Icon as={IoLogoBitcoin} color={"green.500"} w={5} h={5} />}
+                icon={<Icon as={GiArtificialIntelligence} color={"green.500"} w={5} h={5} />}
                 iconBg={useColorModeValue("green.100", "green.900")}
-                text={"Financial Planning"}
+                text={"Artificial Intelligence "}
               />
               <Feature
                 icon={
-                  <Icon as={IoSearchSharp} color={"purple.500"} w={5} h={5} />
+                  <Icon as={FcCollaboration} color={"purple.500"} w={5} h={5} />
                 }
                 iconBg={useColorModeValue("purple.100", "purple.900")}
-                text={"Market Analysis"}
+                text={"Collaboration"}
               />
             </Stack>
           </Stack>

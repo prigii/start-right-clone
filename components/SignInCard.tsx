@@ -11,7 +11,10 @@ import {
     Heading,
     Text,
     useColorModeValue,
+    Icon,
   } from "@chakra-ui/react"
+import { FaGithub } from "react-icons/fa"
+import { FcGoogle } from "react-icons/fc"
   
   export default function SimpleCard() {
     return (
@@ -53,22 +56,32 @@ import {
                   <Link color={"blue.400"}>Forgot password?</Link>
                 </Stack>
                 <Button
-                  bg={"blue.400"}
-                  color={"white"}
+                  loadingText="Submitting"
+                  size="lg"
+                  bg={"white"}
+                  color={"blue"}
+                  border={'2px'}
+                  borderColor={'blue.400'}
                   _hover={{
-                    bg: "blue.500",
+                    bg: "blue.100",
                   }}
                 >
-                  Sign in with Gmail
+                  Continue with Google <Icon as={FcGoogle} mx='10px'></Icon>
                 </Button>
                 <Button
-                  bg={"blue.400"}
+                  loadingText="Submitting"
+                  size="lg"
+                  mr={'6px'}
+                  bg={"black"}
                   color={"white"}
+                  // border={'2px'}
+                  // borderColor={'blue.400'}
                   _hover={{
-                    bg: "blue.500",
+                    bg: "gray.200",
+                    color: "black"
                   }}
                 >
-                  Sign in with GitHub
+                  Continue with GitHub <Icon as={FaGithub} mx='10px'></Icon>
                 </Button>
               </Stack>
             </Stack>
