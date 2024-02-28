@@ -58,6 +58,18 @@ import { FcGoogle } from "react-icons/fc"
                 <Button
                   loadingText="Submitting"
                   size="lg"
+                  bg={"blue"}
+                  color={"white"}
+                  _hover={{
+                    bg: "white",
+                    color: "blue"
+                  }}
+                >
+                  Sign In 
+                </Button>
+                <Button
+                  loadingText="Submitting"
+                  size="lg"
                   bg={"white"}
                   color={"blue"}
                   border={'2px'}
@@ -83,6 +95,10 @@ import { FcGoogle } from "react-icons/fc"
                 >
                   Continue with GitHub <Icon as={FaGithub} mx='10px'></Icon>
                 </Button>
+                <Text ml={'8'}>
+                  Don't have an account?
+                  <Link as={'a'} href="/signup" color={"blue.400"} ml={'4'}>Sign Up</Link>  
+                </Text>
               </Stack>
             </Stack>
           </Box>

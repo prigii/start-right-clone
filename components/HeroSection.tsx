@@ -51,6 +51,7 @@ export default function CallToActionWithAnnotation() {
             position={"relative"}
           >
             <Button
+              as={"a"} href='/signup'
               colorScheme={"green"}
               bg={"green.400"}
               rounded={"full"}

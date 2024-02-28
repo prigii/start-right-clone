@@ -81,6 +81,18 @@ import {
                 </InputGroup>
               </FormControl>
               <Stack spacing={10} pt={2}>
+              <Button
+                  loadingText="Submitting"
+                  size="lg"
+                  bg={"blue"}
+                  color={"white"}
+                  _hover={{
+                    bg: "white",
+                    color: "blue"
+                  }}
+                >
+                  Create Account 
+                </Button>
                 <Button
                   loadingText="Submitting"
                   size="lg"
@@ -112,7 +124,7 @@ import {
               </Stack>
               <Stack pt={6}>
                 <Text align={"center"}>
-                  Already a user? <Link color={"blue.400"}>Login</Link>
+                  Already a user? <Link color={"blue.400"} as={'a'} href="/signin">Login</Link>
                 </Text>
               </Stack>
             </Stack>
