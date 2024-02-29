@@ -96,7 +96,7 @@ import { FcGoogle } from "react-icons/fc"
                   Continue with GitHub <Icon as={FaGithub} mx='10px'></Icon>
                 </Button>
                 <Text ml={'8'}>
-                  Don't have an account?
+                  Don&apos;t have an account?
                   <Link as={'a'} href="/signup" color={"blue.400"} ml={'4'}>Sign Up</Link>  
                 </Text>
               </Stack>
