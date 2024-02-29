@@ -14,6 +14,8 @@ import {
     useColorModeValue,
     useBreakpointValue,
     useDisclosure,
+    Img,
+    Image,
   } from "@chakra-ui/react"
   import {
     HamburgerIcon,
@@ -21,6 +23,8 @@ import {
     ChevronDownIcon,
     ChevronRightIcon,
   } from "@chakra-ui/icons"
+
+  import Logo from "../app/img/startright-logo.png"
   
   export default function WithSubnavigation() {
     const { isOpen, onToggle } = useDisclosure()
@@ -53,6 +57,8 @@ import {
             />
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+            <Box>
+              <Image as={'a'} href="/" boxSize={'10px'} src= "Logo" alt="startright-logo"/></Box>
             <Text
               textAlign={useBreakpointValue({ base: "center", md: "left" })}
               fontFamily={"heading"}

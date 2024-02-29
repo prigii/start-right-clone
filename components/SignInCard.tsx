@@ -11,7 +11,10 @@ import {
     Heading,
     Text,
     useColorModeValue,
+    Icon,
   } from "@chakra-ui/react"
+import { FaGithub } from "react-icons/fa"
+import { FcGoogle } from "react-icons/fc"
   
   export default function SimpleCard() {
     return (
@@ -53,23 +56,49 @@ import {
                   <Link color={"blue.400"}>Forgot password?</Link>
                 </Stack>
                 <Button
-                  bg={"blue.400"}
+                  loadingText="Submitting"
+                  size="lg"
+                  bg={"blue"}
                   color={"white"}
                   _hover={{
-                    bg: "blue.500",
+                    bg: "white",
+                    color: "blue"
                   }}
                 >
-                  Sign in with Gmail
+                  Sign In 
                 </Button>
                 <Button
-                  bg={"blue.400"}
-                  color={"white"}
+                  loadingText="Submitting"
+                  size="lg"
+                  bg={"white"}
+                  color={"blue"}
+                  border={'2px'}
+                  borderColor={'blue.400'}
                   _hover={{
-                    bg: "blue.500",
+                    bg: "blue.100",
                   }}
                 >
-                  Sign in with GitHub
+                  Continue with Google <Icon as={FcGoogle} mx='10px'></Icon>
                 </Button>
+                <Button
+                  loadingText="Submitting"
+                  size="lg"
+                  mr={'6px'}
+                  bg={"black"}
+                  color={"white"}
+                  // border={'2px'}
+                  // borderColor={'blue.400'}
+                  _hover={{
+                    bg: "gray.200",
+                    color: "black"
+                  }}
+                >
+                  Continue with GitHub <Icon as={FaGithub} mx='10px'></Icon>
+                </Button>
+                <Text ml={'8'}>
+                  Don't have an account?
+                  <Link as={'a'} href="/signup" color={"blue.400"} ml={'4'}>Sign Up</Link>  
+                </Text>
               </Stack>
             </Stack>
           </Box>

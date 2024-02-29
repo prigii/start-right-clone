@@ -13,9 +13,12 @@ import {
     Text,
     useColorModeValue,
     Link,
+    Icon,
   } from "@chakra-ui/react"
   import { useState } from "react"
   import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
+  import { FaGithub } from "react-icons/fa6"
+  import { FcGoogle } from "react-icons/fc"
   
   export default function SignupCard() {
     const [showPassword, setShowPassword] = useState(false)
@@ -78,21 +81,50 @@ import {
                 </InputGroup>
               </FormControl>
               <Stack spacing={10} pt={2}>
+              <Button
+                  loadingText="Submitting"
+                  size="lg"
+                  bg={"blue"}
+                  color={"white"}
+                  _hover={{
+                    bg: "white",
+                    color: "blue"
+                  }}
+                >
+                  Create Account 
+                </Button>
                 <Button
                   loadingText="Submitting"
                   size="lg"
-                  bg={"blue.400"}
-                  color={"white"}
+                  bg={"white"}
+                  color={"blue"}
+                  border={'2px'}
+                  borderColor={'blue.400'}
                   _hover={{
-                    bg: "blue.500",
+                    bg: "blue.100",
                   }}
                 >
-                  Sign up
+                  Sign up with Google <Icon as={FcGoogle} mx='10px'></Icon>
+                </Button>
+                <Button
+                  loadingText="Submitting"
+                  size="lg"
+                  mr={'6px'}
+                  bg={"black"}
+                  color={"white"}
+                  // border={'2px'}
+                  // borderColor={'blue.400'}
+                  _hover={{
+                    bg: "gray.200",
+                    color: "black"
+                  }}
+                >
+                  Sign up with GitHub <Icon as={FaGithub} mx='10px'></Icon>
                 </Button>
               </Stack>
               <Stack pt={6}>
                 <Text align={"center"}>
-                  Already a user? <Link color={"blue.400"}>Login</Link>
+                  Already a user? <Link color={"blue.400"} as={'a'} href="/signin">Login</Link>
                 </Text>
               </Stack>
             </Stack>
