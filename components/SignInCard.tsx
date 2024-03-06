@@ -15,8 +15,40 @@ import {
   } from "@chakra-ui/react"
 import { FaGithub } from "react-icons/fa"
 import { FcGoogle } from "react-icons/fc"
+import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { loginUser, loginSelector, clearState } from '../app/Store/slices/LoginSlice';
+import { useEffect } from "react";
   
   export default function SimpleCard() {
+    const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { register, errors, handleSubmit } = useForm();
+  const { isFetching, isSuccess, isError, errorMessage } = useSelector(
+    loginSelector
+  );
+  const onSubmit = (data) => {
+    dispatch(loginUser(data));
+  };
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearState());
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isError) {
+      console.log(errorMessage);
+      dispatch(clearState());
+    }
+
+    if (isSuccess) {
+      dispatch(clearState());
+      navigate('/home');
+    }
+  }, [isError, isSuccess]);
     return (
       <Flex
         minH={"100vh"}

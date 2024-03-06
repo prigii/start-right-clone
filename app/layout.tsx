@@ -3,6 +3,11 @@ import { ChakraProvider } from "@chakra-ui/react"
 
 import WithSubnavigation from "@/components/Navbar"
 import SmallWithSocial from "@/components/Footer"
+import Router from "@/components/Router"
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from 'react-redux'
+import store from './Store/store'
+
 
 export default function RootLayout({
   children,
@@ -20,9 +25,15 @@ export default function RootLayout({
       <body>
         <ChakraProvider>
           <div>
-            <WithSubnavigation />
-            {children}
-            <SmallWithSocial/>
+            <BrowserRouter>
+              <Provider store={store}>
+                <WithSubnavigation />
+                {/* <Navbar /> */}
+                <Router />
+                {children}
+                <SmallWithSocial/>
+              </Provider>
+            </BrowserRouter>
           </div>
         </ChakraProvider>
       </body>
