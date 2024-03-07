@@ -34,10 +34,30 @@ import {
     const { isFetching, isSuccess, isError, errorMessage } = useSelector(
         signupSelector
     );
-    const onSubmit = () => {
-      dispatch(signupUser(data));
-    // handle form submission here
-    };
+    const onSubmit = async (data: any) => {
+    try {
+      const response = await fetch('/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        // user signed up successfully
+        console.log('User signed up!');
+      } else {
+        // handle error
+        console.log('Error signing up user');
+      }
+
+    } catch (error) {
+      // handle network error
+      console.log(error);
+    }
+  };
+
 
   
    useEffect(() => {
