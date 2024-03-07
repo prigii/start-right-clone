@@ -34,10 +34,12 @@ import {
     const { isFetching, isSuccess, isError, errorMessage } = useSelector(
         signupSelector
     );
-    const onSubmit = () => {
-      dispatch(signupUser(data));
+    
+    const onSubmit = (data: any) => {
+    dispatch(signupUser(data));
     // handle form submission here
-    };
+  };
+
 
   
    useEffect(() => {
@@ -54,7 +56,7 @@ import {
 
         if (isSuccess) {
             dispatch(clearState());
-            navigate('/');
+            navigate('/dashboard');
         }
     }, [isError, isSuccess]);
 
