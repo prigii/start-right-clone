@@ -28,28 +28,12 @@ import { useEffect } from "react";
     const { isFetching, isSuccess, isError, errorMessage } = useSelector(
       loginSelector
     );
-    const onSubmit = async (data: any) => {
-      try {
-        const response = await fetch('/api/users', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        });
-  
-        if (response.ok) {
-          // user logged in successfully
-          console.log('User logged in!');
-        } else {
-          // handle error
-          console.log('Error logging in user');
-        }
-      } catch (error) {
-        // handle network error
-        console.log(error);
-      }
+    const onSubmit = () => {
+      dispatch(loginUser());
     };
+
+
+
 
     useEffect(() => {
       return () => {
