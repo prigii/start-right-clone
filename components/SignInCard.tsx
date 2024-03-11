@@ -19,40 +19,51 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, useNavigate } from "react-router-dom";
 import { loginUser, loginSelector, clearState } from '../app/Store/slices/LoginSlice';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
   
-  export default function LogInCard() {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { register, handleSubmit } = useForm();
-    const { isFetching, isSuccess, isError, errorMessage } = useSelector(
-      loginSelector
-    );
-    const onSubmit = () => {
-      dispatch(loginUser());
-    };
+export default function LogInCard() {
+     const { register, handleSubmit } = useForm();
+    // const dispatch = useDispatch();
+    // const navigate = useNavigate();
+    // const [showPassword, setShowPassword] = useState(false);
+    // const { isFetching, isSuccess, isError, errorMessage } = useSelector(
+    //   loginSelector
+    // );
+    // const onSubmit = ()
+ 
+   
+    // const dispatch = useDispatch();
+    // const navigate = useNavigate();
+    // const { register, handleSubmit } = useForm();
+    // const { isFetching, isSuccess, isError, errorMessage } = useSelector(
+    //   loginSelector
+    // );
+    // // const onSubmit = () => {
+    // //   dispatch(loginUser());
+    // // };
 
 
 
 
-    useEffect(() => {
-      return () => {
-        dispatch(clearState());
-      };
-    }, []);
+    // useEffect(() => {
+    //   return () => {
+    //     dispatch(clearState());
+    //   };
+    // }, []);
 
-    useEffect(() => {
-      if (isError) {
-        console.log(errorMessage);
-        dispatch(clearState());
-      }
+    // useEffect(() => {
+    //   if (isError) {
+    //     console.log(errorMessage);
+    //     dispatch(clearState());
+    //   }
 
-      if (isSuccess) {
-        dispatch(clearState());
-        navigate('/dashboard');
-      }
-    }, [isError, isSuccess]);
+    //   if (isSuccess) {
+    //     dispatch(clearState());
+    //     navigate('/dashboard');
+    //   }
+    // }, [isError, isSuccess]);
     return (
+      
       <Flex
         minH={"100vh"}
         align={"center"}
@@ -72,15 +83,16 @@ import { useEffect } from "react";
             boxShadow={"lg"}
             p={8}
           >
-            <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form>      
+              {/* ##/*onSubmit={handleSubmit(onSubmit)}  */}
               <Stack spacing={4}>
                 <FormControl id="email">
                   <FormLabel>Email address</FormLabel>
-                  <Input type="email"   {...register('email', { pattern: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i })} />
+                  <Input type="email"    />
                 </FormControl>
                 <FormControl id="password">
                   <FormLabel>Password</FormLabel>
-                  <Input type="password" {...register('password', { required: true })} />
+                  <Input type="password" >
                 </FormControl>
                 <Stack spacing={10}>
                   <Stack
@@ -91,7 +103,7 @@ import { useEffect } from "react";
                     <Checkbox>Remember me</Checkbox>
                     <Link color={"blue.400"} href="/forgot-password">Forgot password?</Link>
                   </Stack>
-                  {isFetching ? (
+                  
                     <Button
                     loadingText="Submitting"
                     type="submit"
@@ -105,7 +117,7 @@ import { useEffect } from "react";
                   >
                     Sign In 
                   </Button>
-                  ) : (
+                  
                     <Button
                     loadingText="Submitting"
                     type="submit"
@@ -120,8 +132,7 @@ import { useEffect } from "react";
                   >
                     Continue with Google <Icon as={FcGoogle} mx='10px'></Icon>
                   </Button>
-                  )}
-                  {isFetching ? (
+                  
                     <Button
                     loadingText="Submitting"
                     type="submit"
@@ -138,7 +149,7 @@ import { useEffect } from "react";
                   >
                     Continue with GitHub <Icon as={FaGithub} mx='10px'></Icon>
                   </Button>
-                  ) : null}
+                  
                   <Text ml={'8'}>
                     Don&apos;t have an account?
                     <Link as={'a'} href="/signup" color={"blue.400"} ml={'4'}>Sign Up</Link>  
@@ -149,6 +160,5 @@ import { useEffect } from "react";
           </Box>
         </Stack>
       </Flex>
-  );
-
-}
+    );
+  }

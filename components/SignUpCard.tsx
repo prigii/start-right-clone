@@ -19,44 +19,44 @@ import {
   import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
   import { FaGithub } from "react-icons/fa6"
   import { FcGoogle } from "react-icons/fc"
-  import { useDispatch, useSelector } from "react-redux";
-  import { Form, useNavigate } from "react-router-dom";
-  import { useForm } from "react-hook-form";
-  import { signupUser, signupSelector, clearState } from '../app/Store/slices/SignUpSlice';
+  // import { useDispatch, useSelector } from "react-redux";
+   import { Form, useNavigate } from "react-router-dom";
+  // import { useForm } from "react-hook-form";
+  // import { signupUser, signupSelector, clearState } from '../app/Store/slices/SignUpSlice';
 
 
   export default function SignUpCard() {
     const [showPassword, setShowPassword] = useState(false);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { register, handleSubmit } = useForm();
+  //   const dispatch = useDispatch();
+  //   const navigate = useNavigate();
+  //   const { register, handleSubmit } = useForm();
 
-    const { isFetching, isSuccess, isError, errorMessage } = useSelector(
-        signupSelector
-    );
-    const onSubmit = () => {
-      dispatch(signupUser());
-    };
+  //   const { isFetching, isSuccess, isError, errorMessage } = useSelector(
+  //       signupSelector
+  //   );
+  //   // const onSubmit = () => {
+  //   //   dispatch(signupUser());
+  //   // };
 
 
   
-   useEffect(() => {
-        return () => {
-            dispatch(clearState());
-        };
-    }, []);
+  //  useEffect(() => {
+  //       return () => {
+  //           dispatch(clearState());
+  //       };
+  //   }, []);
 
-    useEffect(() => {
-        if (isError) {
-            console.log(errorMessage);
-            dispatch(clearState());
-        }
+  //   useEffect(() => {
+  //       if (isError) {
+  //           console.log(errorMessage);
+  //           dispatch(clearState());
+  //       }
 
-        if (isSuccess) {
-            dispatch(clearState());
-            navigate('/dashboard');
-        }
-    }, [isError, isSuccess]);
+  //       if (isSuccess) {
+  //           dispatch(clearState());
+  //           navigate('/dashboard');
+  //       }
+  //   }, [isError, isSuccess]);
 
         return (
           <Flex
@@ -80,30 +80,30 @@ import {
                 boxShadow={"lg"}
                 p={8}
               >
-                <Form onSubmit={handleSubmit(onSubmit)}>
+                  <Form>{/*  onSubmit={handleSubmit(onSubmit)} */}
                   <Stack spacing={4}>
                     <HStack>
                       <Box>
                         <FormControl id="firstName" isRequired>
                           <FormLabel>First Name</FormLabel>
-                          <Input type="text" {...register('firstname', { required: true })} />
+                          <Input type="text"  />
                         </FormControl>
                       </Box>
                       <Box>
                         <FormControl id="lastName">
                           <FormLabel>Last Name</FormLabel>
-                          <Input type="text" {...register('lastname', { required: true })} />
+                          <Input type="text" />
                         </FormControl>
                       </Box>
                     </HStack>
                     <FormControl id="email" isRequired>
                       <FormLabel>Email address</FormLabel>
-                      <Input type="email" {...register('email', { pattern: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i })} />
+                      <Input type="email" />
                     </FormControl>
                     <FormControl id="password" isRequired>
                       <FormLabel>Password</FormLabel>
                       <InputGroup>
-                        <Input type={showPassword ? "text" : "password"} {...register('password', { required: true })} />
+                        <Input type={showPassword ? "text" : "password"} />
                         <InputRightElement h={"full"}>
                           <Button
                             variant={"ghost"}
@@ -117,7 +117,7 @@ import {
                       </InputGroup>
                     </FormControl>
                     <Stack spacing={10} pt={2}>
-                      {isFetching ? (
+                      {/* <Stack spacing={10}> */}
                         <Button
                           loadingText="Submitting"
                           size="lg"
@@ -130,7 +130,7 @@ import {
                         >
                           Create Account
                         </Button>
-                      ) : (
+                      
                         <Button
                           loadingText="Submitting"
                           size="lg"
@@ -144,9 +144,8 @@ import {
                         >
                           Sign up with Google <Icon as={FcGoogle} mx="10px" />
                         </Button>
-                      )}
-                      {isFetching ? null: (
-                        <Button
+
+                      <Button
                           loadingText="Submitting"
                           size="lg"
                           mr={"6px"}
@@ -159,7 +158,7 @@ import {
                         >
                           Sign up with GitHub <Icon as={FaGithub} mx="10px" />
                         </Button>
-                      )}
+                      
                     </Stack>
                     <Stack pt={6}>
                       <Text align={"center"}>
@@ -175,6 +174,5 @@ import {
             </Stack>
           </Flex>
   );
-
 
 }
