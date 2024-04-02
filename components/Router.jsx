@@ -12,7 +12,7 @@ export default function BrowserRouter() {
             <Route element={<PrivateRoute /> }>
                 <Route path="/dashboard" element={<Dashboard />} />
             </Route>
-            <Route path="/signUp" element={<SignUp />} />
+            <Route path="/" element={<SignUp />} />
         </Routes>
     );
 }
