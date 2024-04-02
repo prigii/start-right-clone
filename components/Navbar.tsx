@@ -307,7 +307,7 @@ import {
     },
     {
       label: "About Us",
-      href: "/techstack",
+      href: "/aboutus",
     },
     {
       label: "Contact Us",
