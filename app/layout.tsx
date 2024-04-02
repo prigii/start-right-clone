@@ -20,11 +20,10 @@ export default function RootLayout({
         <ChakraProvider>
           <div>
             <BrowserRouter>
-
               <WithSubnavigation />
-              {/* <Navbar /> */}
-              {/* <Router /> */}
-              {children}
+                {/* <Navbar /> */}
+                {/* <Router /> */}
+                {children}
               <SmallWithSocial />
 
             </BrowserRouter>
