@@ -11,9 +11,9 @@ export default function SignUpCard() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { isFetching, isSuccess, isError, errorMessage } = useSelector((state) => state.signup);
 
-  const onSubmit = (data) => {
-    dispatch(signupUser(data));
-  };
+  // const onSubmit = (data) => {
+  //   dispatch(signupUser(data));
+  // };
 
   useEffect(() => {
     // Handle success/error messages or redirection upon successful signup
