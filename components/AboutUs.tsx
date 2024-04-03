@@ -1,12 +1,23 @@
 import React from 'react';
 import { Box, Text, Heading, Container, Grid, GridItem, Image } from '@chakra-ui/react';
 
+
 const AboutUs = () => {
   return (
-    <Container maxW="container.lg" mt={8}>
+    <Box
+      backgroundImage="url('../public/AI_photo.jpg')" // Replace '/path/to/your/image.jpg' with the path to your image
+      backgroundSize="cover"
+      backgroundPosition="center"
+      minHeight="100vh"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      py={8}
+    >
+    <Container maxW="container.lg" mt={8} >
       <Grid templateColumns="repeat(6, 2fr)" gap={4}>
         <GridItem colSpan={{ base: 12, md: 10, lg: 8 }} mx="auto">
-          <Box textAlign="center" mb={8}>
+          <Box textAlign="center" mb={8} >
             <Heading as="h1" fontSize={{ base: '2xl', md: '3xl' }} color="whatsapp.500" mb={4}>
               About StartRight
             </Heading>
@@ -24,6 +35,7 @@ const AboutUs = () => {
         </GridItem>
       </Grid>
     </Container>
+    </Box>
   );
 };
 
