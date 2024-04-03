@@ -1,123 +1,78 @@
-import {
-    Flex,
-    Box,
-    FormControl,
-    FormLabel,
-    Input,
-    Checkbox,
-    Stack,
-    Link,
-    Button,
-    Heading,
-    Text,
-    useColorModeValue,
-    Icon,
-  } from "@chakra-ui/react"
-import { FaGithub } from "react-icons/fa"
-import { FcGoogle } from "react-icons/fc"
-import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import { Form, useNavigate } from "react-router-dom";
-import { loginUser, loginSelector, clearState } from '../app/Store/slices/LoginSlice';
-import { useEffect, useState } from "react";
-  
-export default function LogInCard() {
-    return (
-        <Flex
-          minH={"100vh"}
-          align={"center"}
-          justify={"center"}
-          bg={useColorModeValue("gray.50", "gray.800")}
-        >
-          <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
-            <Stack align={"center"}>
-              <Heading fontSize={"4xl"}>Sign in to your account</Heading>
-              <Text fontSize={"lg"} color={"gray.600"}>
-                to enjoy all of our cool <Link color={"blue.400"}>features</Link> ✌️
-              </Text>
-            </Stack>
-            <Box
-              rounded={"lg"}
-              bg={useColorModeValue("white", "gray.700")}
-              boxShadow={"lg"}
-              p={8}
-            >
-              <Form>      
-                {/* ##/*onSubmit={handleSubmit(onSubmit)}  */}
-                <Stack spacing={4}>
-                  <FormControl id="email">
-                    <FormLabel>Email address</FormLabel>
-                    <Input type="email"    />
-                  </FormControl>
-                  <FormControl id="password">
-                    <FormLabel>Password</FormLabel>
-                    <Input type="password" />
-                  </FormControl>
-                  <Stack spacing={10}>
-                    <Stack
-                      direction={{ base: "column", sm: "row" }}
-                      align={"start"}
-                      justify={"space-between"}
-                    >
-                      <Checkbox>Remember me</Checkbox>
-                      <Link color={"blue.400"} href="/forgot-password">Forgot password?</Link>
-                    </Stack>
-                    
-                      <Button
-                      loadingText="Submitting"
-                      type="submit"
-                      size="lg"
-                      bg={"blue"}
-                      color={"white"}
-                      _hover={{
-                        bg: "white",
-                        color: "blue"
-                      }}
-                    >
-                      Sign In 
-                    </Button>
-                    
-                      <Button
-                      loadingText="Submitting"
-                      type="submit"
-                      size="lg"
-                      bg={"white"}
-                      color={"blue"}
-                      border={'2px'}
-                      borderColor={'blue.400'}
-                      _hover={{
-                        bg: "blue.100",
-                      }}
-                    >
-                      Continue with Google <Icon as={FcGoogle} mx='10px'></Icon>
-                    </Button>
-                    
-                    <Button
-                    loadingText="Submitting"
-                    type="submit"
-                    size="lg"
-                    mr={'6px'}
-                    bg={"black"}
-                    color={"white"}
-                    // border={'2px'}
-                    // borderColor={'blue.400'}
-                    _hover={{
-                    bg: "gray.200",
-                    color: "black"
-                    }}
-                    >
-                      Continue with GitHub <Icon as={FaGithub} mx='10px'></Icon>
-                    </Button>
-                    
-                    <Text ml={'8'}>
-                      Don&apos;t have an account?
-                      <Link as={'a'} href="/signup" color={"blue.400"} ml={'4'}>Sign Up</Link>  
-                    </Text>
-                  </Stack>
-                </Stack>
-              </Form>
-            </Box>
-          </Stack>
-        </Flex>
-    );
-}
+import React, { useState } from 'react';
+import { Button, FormControl, FormLabel, Input, VStack } from '@chakra-ui/react';
+
+
+const SignInCard = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSignIn = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+
+    try {
+      // Backend endpoint for authentication
+      const response = await fetch('https://url/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Login failed');
+      }
+
+      // Retrieve the token from the response
+      const data = await response.json();
+      const token = data.token;
+
+      // Optionally, save the token to local storage or state
+      console.log('User logged in successfully');
+    } catch (error: any) {
+      console.error('Login error:', error.message);
+      // Optionally, update UI to display error message
+    }
+  };
+
+  const handleGoogleSignIn = () => {
+    // Perform Google sign-in using Firebase Authentication
+    // Example: firebase.auth().signInWithPopup(googleProvider);
+  };
+
+  const handleGitHubSignIn = () => {
+    // Redirect users to your backend server's GitHub OAuth URL
+    // Example: window.location.href = 'https://your-backend-endpoint.com/auth/github';
+  };
+
+  return (
+    <form onSubmit={handleSignIn}>
+      <VStack spacing={4}>
+        <FormControl>
+          <FormLabel>Email</FormLabel>
+          <Input type="email" name="email" value={formData.email} onChange={handleChange} />
+        </FormControl>
+        <FormControl>
+          <FormLabel>Password</FormLabel>
+          <Input type="password" name="password" value={formData.password} onChange={handleChange} />
+        </FormControl>
+        <Button type="submit" colorScheme="blue">Sign In</Button>
+        <Button onClick={handleGoogleSignIn} colorScheme="red">Sign In with Google</Button>
+        <Button onClick={handleGitHubSignIn} colorScheme="gray">Sign In with GitHub</Button>
+      </VStack>
+    </form>
+  );
+};
+
+
+export default SignInCard;

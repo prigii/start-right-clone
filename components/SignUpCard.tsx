@@ -1,132 +1,99 @@
-import { Flex, Box, FormControl, FormLabel, Input, Stack, Button, Heading, Text, useColorModeValue, Link, Icon } from "@chakra-ui/react";
-import { FaGithub } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
-import { signupUser } from '../app/Store/slices/SignUpSlice';
-import { useDispatch, useSelector } from "react-redux";
-import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import React, { useState } from 'react';
+import { Box, Button, Flex, Text, FormControl, FormLabel, Heading, Input, Stack, VStack, useColorModeValue } from '@chakra-ui/react';
 
-export default function SignUpCard() {
-  const dispatch = useDispatch();
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const { isFetching, isSuccess, isError, errorMessage } = useSelector((state) => state.signup);
+const SignUpCard = () => {
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
 
-  // const onSubmit = (data) => {
-  //   dispatch(signupUser(data));
-  // };
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-  useEffect(() => {
-    // Handle success/error messages or redirection upon successful signup
-    if (isSuccess) {
-      // Redirect or show success message
+
+  const handleGoogleSignIn = () => {
+    // Perform Google sign-in using Firebase Authentication
+    // Example: firebase.auth().signInWithPopup(googleProvider);
+  };
+
+  const handleGitHubSignIn = () => {
+    // Redirect users to your backend server's GitHub OAuth URL
+    // Example: window.location.href = 'https://your-backend-endpoint.com/auth/github';
+  };
+
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('https://url/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Registration failed');
+      }
+
+      // Optionally, handle successful registration here
+      console.log('User registered successfully');
+    } catch (error: any) {
+      console.error('Registration error:', error.message);
+      // Optionally, update UI to display error message
     }
-    if (isError) {
-      // Handle error, show error message
-    }
-  }, [isSuccess, isError]);
+  };
 
-  return (
-    <Flex
-      minH={"100vh"}
-      align={"center"}
-      justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
-    >
-      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
-        <Stack align={"center"}>
-          <Heading fontSize={"4xl"} textAlign={"center"}>
-            Sign Up
-          </Heading>
-          <Text fontSize={"lg"} color={"gray.600"}>
-            to enjoy all of our cool features ✌️
-          </Text>
+
+  const SignUpCard = () => {
+
+    return (
+      <Flex minH={'100vh'} align={'center'} justify={'center'}>
+
+        <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+          <Stack align={"center"}>
+            <Heading fontSize={"4xl"} textAlign={"center"}>
+              Sign Up
+            </Heading>
+            <Text fontSize={"lg"} color={"gray.600"}>
+              to enjoy all of our cool features ✌️
+            </Text>
+          </Stack>
+          <Box
+            rounded={"lg"}
+            bg={useColorModeValue("white", "gray.700")}
+            boxShadow={"lg"}
+            p={8}
+          >
+            <form onSubmit={handleSubmit}>
+              <VStack spacing={4}>
+                <FormControl>
+                  <FormLabel>Username</FormLabel>
+                  <Input type="text" name="username" value={formData.username} onChange={handleChange} />
+                </FormControl>
+                <FormControl>
+                  <FormLabel>Email</FormLabel>
+                  <Input type="email" name="email" value={formData.email} onChange={handleChange} />
+                </FormControl>
+                <FormControl>
+                  <FormLabel>Password</FormLabel>
+                  <Input type="password" name="password" value={formData.password} onChange={handleChange} />
+                </FormControl>
+                <Button type="submit" colorScheme="blue">Register</Button>
+              </VStack>
+            </form>
+          </Box>
         </Stack>
-        <Box
-          rounded={"lg"}
-          bg={useColorModeValue("white", "gray.700")}
-          boxShadow={"lg"}
-          p={8}
-        >
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Stack spacing={4}>
-              <FormControl id="firstName" isRequired>
-                <FormLabel>First Name</FormLabel>
-                <Input type="text" {...register("firstName", { required: true })} />
-                {errors.firstName && <span>This field is required</span>}
-              </FormControl>
-              <FormControl id="lastName" isRequired>
-                <FormLabel>Last Name</FormLabel>
-                <Input type="text" {...register("lastName", { required: true })} />
-                {errors.lastName && <span>This field is required</span>}
-              </FormControl>
-              <FormControl id="email" isRequired>
-                <FormLabel>Email address</FormLabel>
-                <Input type="email" {...register("email", { required: true })} />
-                {errors.email && <span>This field is required</span>}
-              </FormControl>
-              <FormControl id="password" isRequired>
-                <FormLabel>Password</FormLabel>
-                <Input type="password" {...register("password", { required: true })} />
-                {errors.password && <span>This field is required</span>}
-              </FormControl>
-              <Stack spacing={10} pt={2}>
-                <Button
-                  type="submit"
-                  isLoading={isFetching}
-                  loadingText="Submitting"
-                  size="lg"
-                  bg={"blue"}
-                  color={"white"}
-                  _hover={{
-                    bg: "white",
-                    color: "blue",
-                  }}
-                >
-                  Create Account
-                </Button>
-
-                <Button
-                  loadingText="Submitting"
-                  size="lg"
-                  bg={"white"}
-                  color={"blue"}
-                  border={"2px"}
-                  borderColor={"blue.400"}
-                  _hover={{
-                    bg: "blue.100",
-                  }}
-                >
-                  Sign up with Google <Icon as={FcGoogle} mx="10px" />
-                </Button>
-
-                <Button
-                  loadingText="Submitting"
-                  size="lg"
-                  mr={"6px"}
-                  bg={"black"}
-                  color={"white"}
-                  _hover={{
-                    bg: "gray.200",
-                    color: "black",
-                  }}
-                >
-                  Sign up with GitHub <Icon as={FaGithub} mx="10px" />
-                </Button>
-              </Stack>
-              <Stack pt={6}>
-                <Text align={"center"}>
-                  Already a user?{" "}
-                  <Link color={"blue.400"} href="/signin">
-                  Login
-                  </Link>
-                </Text>
-              </Stack>
-            </Stack>
-          </form>
-        </Box>
-      </Stack>
-    </Flex>
-  );
+      </Flex>
+    );
+  };
 }
-
+  export default SignUpCard;
 
