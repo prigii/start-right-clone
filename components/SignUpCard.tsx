@@ -66,39 +66,40 @@ const SignUpCard = () => {
             to enjoy all of our cool features ✌️
           </Text>
         </Stack>
-       
-          <form onSubmit={handleSubmit}>
-            <VStack spacing={4} w={480} align={'center'} justify={'center'} variant='outline' p={4} shadow={'lg'}>  
-              <FormControl>
-              <FormControl>
-                <FormLabel>First name</FormLabel>
-                <Input type="text" name="firstname" value={formData.firstname} onChange={handleChange} />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Last name</FormLabel>
-                <Input type="text" name="lastname" value={formData.lastname} onChange={handleChange} />
-              </FormControl>
-                <FormLabel>Preferred Username</FormLabel>
-                <Input type="text" name="username" value={formData.username} onChange={handleChange} />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Email</FormLabel>
-                <Input type="email" name="email" value={formData.email} onChange={handleChange} />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Password</FormLabel>
-                <Input type="password" name="password" value={formData.password} onChange={handleChange} />
-              </FormControl>
-              <Button type="submit" colorScheme="blue">Register</Button>
-              <Button onClick={handleGoogleSignIn} colorScheme="red">Sign In with Google</Button>
-              <Button onClick={handleGitHubSignIn} colorScheme="gray">Sign In with GitHub</Button>
 
-            </VStack>
-          </form>
-      
+        <form onSubmit={handleSubmit}>
+          <VStack spacing={4} w={480} align={'center'} justify={'center'} p={4} shadow={'lg'}>
+            <FormControl>
+              <FormLabel>First name</FormLabel>
+              <Input type="text" name="firstname" value={formData.firstname} onChange={handleChange} />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Last name</FormLabel>
+              <Input type="text" name="lastname" value={formData.lastname} onChange={handleChange} />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Preferred Username</FormLabel>
+              <Input type="text" name="username" value={formData.username} onChange={handleChange} />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Email</FormLabel>
+              <Input type="email" name="email" value={formData.email} onChange={handleChange} />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Password</FormLabel>
+              <Input type="password" name="password" value={formData.password} onChange={handleChange} />
+            </FormControl>
+            <Button type="submit" colorScheme="blue">Register</Button>
+            <Button onClick={handleGoogleSignIn} colorScheme="red">Sign In with Google</Button>
+            <Button onClick={handleGitHubSignIn} colorScheme="gray">Sign In with GitHub</Button>
+
+          </VStack>
+        </form>
+
       </Stack>
     </Flex>
   );
 };
+
 
 export default SignUpCard

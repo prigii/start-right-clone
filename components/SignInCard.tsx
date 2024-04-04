@@ -59,7 +59,7 @@ const SignInCard = () => {
     <Flex flexDir="column" w="full" p={4} maxW="md" m="auto" align={'center'} justify={'center'}>
       
     <form onSubmit={handleSignIn}>
-      <VStack spacing={4} mt={10} mb={10} variant='outline' p={4} shadow={'lg'} w={'450px'}>
+      <VStack spacing={4} mt={10} mb={10} p={4} shadow={'lg'} w={'450px'}>
       <Heading as='h1'>Sign In</Heading>
         <FormControl>
           <FormLabel>Email</FormLabel>
