@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Flex, Text, FormControl, FormLabel, Heading, Input, Stack, VStack, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, Flex, Text, FormControl, FormLabel, Heading, Input, Stack, VStack, useColorModeValue, Link } from '@chakra-ui/react';
 
 const SignUpCard = () => {
   const [formData, setFormData] = useState({
@@ -68,31 +68,31 @@ const SignUpCard = () => {
         </Stack>
 
         <form onSubmit={handleSubmit}>
-          <VStack spacing={4} w={480} align={'center'} justify={'center'} p={4} shadow={'lg'}>
+          <VStack spacing={4} w={480} bgColor={'gray.100'} align={'center'} justify={'center'} p={4} shadow={'lg'} >
             <FormControl>
               <FormLabel>First name</FormLabel>
-              <Input type="text" name="firstname" value={formData.firstname} onChange={handleChange} />
+              <Input type="text" bgColor={'white'} name="firstname" value={formData.firstname} onChange={handleChange} />
             </FormControl>
             <FormControl>
               <FormLabel>Last name</FormLabel>
-              <Input type="text" name="lastname" value={formData.lastname} onChange={handleChange} />
+              <Input type="text" bgColor={'white'} name="lastname" value={formData.lastname} onChange={handleChange} />
             </FormControl>
             <FormControl>
               <FormLabel>Preferred Username</FormLabel>
-              <Input type="text" name="username" value={formData.username} onChange={handleChange} />
+              <Input type="text" bgColor={'white'} name="username" value={formData.username} onChange={handleChange} />
             </FormControl>
             <FormControl>
               <FormLabel>Email</FormLabel>
-              <Input type="email" name="email" value={formData.email} onChange={handleChange} />
+              <Input type="email" bgColor={'white'} name="email" value={formData.email} onChange={handleChange} />
             </FormControl>
             <FormControl>
               <FormLabel>Password</FormLabel>
-              <Input type="password" name="password" value={formData.password} onChange={handleChange} />
+              <Input type="password" bgColor={'white'} name="password" value={formData.password} onChange={handleChange} />
             </FormControl>
             <Button type="submit" colorScheme="blue">Register</Button>
             <Button onClick={handleGoogleSignIn} colorScheme="red">Sign In with Google</Button>
             <Button onClick={handleGitHubSignIn} colorScheme="gray">Sign In with GitHub</Button>
-
+            <Text fontSize={"sm"} color={"gray.600"}> Already have an account? <Link as={"span"} href='/signin' color={"blue.400"}>Sign In</Link></Text>
           </VStack>
         </form>
 

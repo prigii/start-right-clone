@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Flex, FormControl, FormLabel, Heading, Input, VStack } from '@chakra-ui/react';
-
+import { Button, Flex, FormControl, FormLabel, Heading, Input, Link, Text, VStack } from '@chakra-ui/react';
 
 const SignInCard = () => {
   const [formData, setFormData] = useState({
@@ -57,25 +56,27 @@ const SignInCard = () => {
 
   return (
     <Flex flexDir="column" w="full" p={4} maxW="md" m="auto" align={'center'} justify={'center'}>
-      
-    <form onSubmit={handleSignIn}>
-      <VStack spacing={4} mt={10} mb={10} p={4} shadow={'lg'} w={'450px'}>
-      <Heading as='h1'>Sign In</Heading>
-        <FormControl>
-          <FormLabel>Email</FormLabel>
-          <Input type="email" name="email" value={formData.email} onChange={handleChange} />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Password</FormLabel>
-          <Input type="password" name="password" value={formData.password} onChange={handleChange} />
-        </FormControl>
-        <Button type="submit" colorScheme="blue">Sign In</Button>
-        <Button onClick={handleGoogleSignIn} colorScheme="red">Sign In with Google</Button>
-        <Button onClick={handleGitHubSignIn} colorScheme="gray" textColor={'dark'}>Sign In with GitHub</Button>
-      </VStack>
-    </form>
+
+      <form onSubmit={handleSignIn}>
+        <VStack spacing={4} mt={10} mb={10} bgColor={'gray.100'} p={4} shadow={'lg'} w={'450px'} borderRadius={'lg'}>
+          <Heading as='h1' color={'green.400'}>StartRight</Heading>
+          <Text>Welcome back! Please sign in to your account</Text>
+          <FormControl>
+            <FormLabel>Email</FormLabel>
+            <Input type="email" name="email" value={formData.email} bgColor={'white'} onChange={handleChange} />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Password</FormLabel>
+            <Input type="password" name="password" value={formData.password} bgColor={'white'} onChange={handleChange} />
+          </FormControl>
+          <Button type="submit" colorScheme="blue">Sign In</Button>
+          <Button onClick={handleGoogleSignIn} colorScheme="red">Sign In with Google</Button>
+          <Button onClick={handleGitHubSignIn} colorScheme="teal">Sign In with GitHub</Button>
+          <Text>Don't have an account yet? <Link as={"span"} href="/signup" color={"blue.400"}>Sign Up</Link></Text>
+        </VStack>
+      </form>
     </Flex>
-    );
+  );
 };
 
 
