@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, FormControl, FormLabel, Input, VStack } from '@chakra-ui/react';
+import { Button, Flex, FormControl, FormLabel, Heading, Input, VStack } from '@chakra-ui/react';
 
 
 const SignInCard = () => {
@@ -56,8 +56,11 @@ const SignInCard = () => {
   };
 
   return (
+    <Flex flexDir="column" w="full" p={4} maxW="md" m="auto" align={'center'} justify={'center'}>
+      
     <form onSubmit={handleSignIn}>
-      <VStack spacing={4}>
+      <VStack spacing={4} mt={10} mb={10} variant='outline' p={4} shadow={'lg'} w={'450px'}>
+      <Heading as='h1'>Sign In</Heading>
         <FormControl>
           <FormLabel>Email</FormLabel>
           <Input type="email" name="email" value={formData.email} onChange={handleChange} />
@@ -68,10 +71,11 @@ const SignInCard = () => {
         </FormControl>
         <Button type="submit" colorScheme="blue">Sign In</Button>
         <Button onClick={handleGoogleSignIn} colorScheme="red">Sign In with Google</Button>
-        <Button onClick={handleGitHubSignIn} colorScheme="gray">Sign In with GitHub</Button>
+        <Button onClick={handleGitHubSignIn} colorScheme="gray" textColor={'dark'}>Sign In with GitHub</Button>
       </VStack>
     </form>
-  );
+    </Flex>
+    );
 };
 
 
