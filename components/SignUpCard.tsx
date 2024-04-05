@@ -59,7 +59,10 @@ const SignUpCard = () => {
 
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
-          <Heading fontSize={"4xl"} textAlign={"center"}>
+        <Heading fontSize={"4xl"} textAlign={"center"} color={'green.400'}>
+            Welcome to StartRight
+          </Heading>
+          <Heading fontSize={"xl"} textAlign={"center"}>
             Sign Up
           </Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
@@ -91,8 +94,8 @@ const SignUpCard = () => {
             </FormControl>
             <Button type="submit" colorScheme="blue">Register</Button>
             <Button onClick={handleGoogleSignIn} colorScheme="red">Sign In with Google</Button>
-            <Button onClick={handleGitHubSignIn} colorScheme="gray">Sign In with GitHub</Button>
-            <Text fontSize={"sm"} color={"gray.600"}> Already have an account? <Link as={"span"} href='/signin' color={"blue.400"}>Sign In</Link></Text>
+            <Button onClick={handleGitHubSignIn} colorScheme="teal">Sign In with GitHub</Button>
+            <Text fontSize={"sm"} color={"gray.600"}> Already have an account? <Link as={"a"} href='/signin' color={"blue.400"}>Sign In</Link></Text>
           </VStack>
         </form>
 

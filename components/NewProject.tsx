@@ -33,7 +33,7 @@ import { FaUpload } from "react-icons/fa";
         justifyContent={'center'}
         //bg={useColorModeValue("gray.50", "gray.800")}
       >
-        <Heading as='h2' mb={'10'}>Create New Project</Heading>
+        <Heading as='h2' mb={'10'}>Create a New Project</Heading>
         <Text mb={'6'}>Let us know more about your app then you can buckle up and watch us do the magic.</Text>
         <FormControl>
           <Text fontSize={'large'} fontWeight={'bold'}>Project Information</Text>
@@ -153,9 +153,9 @@ import { FaUpload } from "react-icons/fa";
 
 
         <Flex flexDirection={'row'} gap={'20'} mt={'12'} mb={'12'} justifyContent={'center'}>
-          <Button type="submit" as={'a'} href="/techstack" colorScheme="teal">
+          {/* <Button type="submit" as={'a'} href="/techstack" colorScheme="teal">
             Create App
-          </Button>
+          </Button> */}
           <Button as={'a'} href='/appprocessing' bg={'whatsapp.500'} color={'white'}>Start Building</Button>
         </Flex>
 

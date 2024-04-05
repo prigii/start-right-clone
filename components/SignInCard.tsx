@@ -56,11 +56,11 @@ const SignInCard = () => {
 
   return (
     <Flex flexDir="column" w="full" p={4} maxW="md" m="auto" align={'center'} justify={'center'}>
-
+      <Heading as='h1' color={'green.400'} mb={4}>StartRight</Heading>
+      <Text fontWeight={'bold'} fontSize={'xl'} mb={4}>Welcome back!</Text>
+      <Text>Please sign in to your account</Text>
       <form onSubmit={handleSignIn}>
         <VStack spacing={4} mt={10} mb={10} bgColor={'gray.100'} p={4} shadow={'lg'} w={'450px'} borderRadius={'lg'}>
-          <Heading as='h1' color={'green.400'}>StartRight</Heading>
-          <Text>Welcome back! Please sign in to your account</Text>
           <FormControl>
             <FormLabel>Email</FormLabel>
             <Input type="email" name="email" value={formData.email} bgColor={'white'} onChange={handleChange} />
@@ -72,7 +72,7 @@ const SignInCard = () => {
           <Button type="submit" colorScheme="blue">Sign In</Button>
           <Button onClick={handleGoogleSignIn} colorScheme="red">Sign In with Google</Button>
           <Button onClick={handleGitHubSignIn} colorScheme="teal">Sign In with GitHub</Button>
-          <Text>Don't have an account yet? <Link as={"span"} href="/signup" color={"blue.400"}>Sign Up</Link></Text>
+          <Text>Don't have an account yet? <Link as={"a"} href="/signup" color={"blue.400"}>Sign Up</Link></Text>
         </VStack>
       </form>
     </Flex>

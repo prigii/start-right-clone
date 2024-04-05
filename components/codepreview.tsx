@@ -21,14 +21,14 @@ const FileManager: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const folders: Folder[] = [
-    { 
+    {
       name: 'Folder 1',
       files: [
         { name: 'File 1', code: 'console.log("Hello, World!");' },
         { name: 'File 2', code: 'function greet() {\n  return "Hello";\n}' },
       ]
     },
-    { 
+    {
       name: 'Folder 2',
       files: [
         { name: 'File 3', code: 'console.log("This is file 3");' },
@@ -49,11 +49,18 @@ const FileManager: React.FC = () => {
           <Box key={index} p={4}>
             <Text fontWeight="bold" mb={2}>{folder.name}</Text>
             <Divider my={2} />
-            {folder.files.map((file, fileIndex) => (
-              <Button flexDirection={'row'} key={fileIndex} onClick={() => handleFileSelect(file)} variant="ghost" mb={2}>
-                {file.name}
-              </Button>
-            ))}
+            <Flex  flexDirection="column">
+              {folder.files.map((file, fileIndex) => (
+                <Button key={fileIndex}
+                  onClick={() => handleFileSelect(file)}
+                  variant="ghost"
+                  mb={2} mr={2}
+                  flex="0 0 auto" // Ensure buttons don't shrink
+                  >
+                  {file.name}
+                </Button>
+              ))}
+            </Flex>
           </Box>
         ))}
       </Box>

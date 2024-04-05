@@ -21,7 +21,7 @@ export default function AppProcessing() {
           <Progress colorScheme='green' height='32px' value={20} />
           <Progress size='sm' isIndeterminate />
         </Stack>
-        <Button as={'a'} href='/appreview' bg={'red'}  color={'white'} mt={'10'} _hover={{bg: 'teal.400'}} mb={'20'}>Review your app</Button>
+        <Button as={'a'} href='/codepreview' bg={'red'}  color={'white'} mt={'10'} _hover={{bg: 'teal.400'}} mb={'20'}>Review your app</Button>
       </Container>
     </VStack>
   )
