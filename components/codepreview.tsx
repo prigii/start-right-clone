@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -6,6 +6,7 @@ import {
   Flex,
   Text,
 } from '@chakra-ui/react';
+import axios from 'axios';
 
 interface File {
   name: string;
@@ -18,7 +19,19 @@ interface Folder {
 }
 
 const FileManager: React.FC = () => {
+  // const [folders, setFolders] = useState<Folder[]>([]);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  // useEffect(() => {
+  //   // Fetch folders and files from the backend endpoint
+  //   axios.get('/api/folders')
+  //     .then(response => {
+  //       setFolders(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching folders:', error);
+  //     });
+  // }, []);
 
   const folders: Folder[] = [
     {
@@ -43,18 +56,18 @@ const FileManager: React.FC = () => {
   };
 
   return (
-    <Flex>
-      <Box flex="1" borderRight="1px solid #E2E8F0" overflow="auto">
+    <Flex >
+      <Box flex="1" borderRight="1px solid #E2E8F0" overflow="auto" >
         {folders.map((folder, index) => (
           <Box key={index} p={4}>
-            <Text fontWeight="bold" mb={2}>{folder.name}</Text>
+            <Text fontWeight="bold" mb={2} ml={6}>{folder.name}</Text>
             <Divider my={2} />
             <Flex  flexDirection="column">
               {folder.files.map((file, fileIndex) => (
                 <Button key={fileIndex}
                   onClick={() => handleFileSelect(file)}
                   variant="ghost"
-                  mb={2} mr={2}
+                  mb={2} 
                   flex="0 0 auto" // Ensure buttons don't shrink
                   >
                   {file.name}
@@ -66,7 +79,7 @@ const FileManager: React.FC = () => {
       </Box>
       <Box flex="2" p={4}>
         {selectedFile ? (
-          <Box bgColor={'blue.800'} p={4} borderRadius={4} textColor={'white'}>
+          <Box bgSize={'cover'} bgColor={'blue.800'} p={4} borderRadius={4} textColor={'white'}>
             <Text fontWeight="bold" mb={2}>Code Preview</Text>
             <pre>{selectedFile.code}</pre>
           </Box>
